@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Controles</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+  </head>
+  <body>
+    <div class="container-fluid mt-5">
+      <div class="row">
+        <div class="col-4">
+          <h1>Lista de controles</h1>
+          <div class="form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="seleccionar-todo"
+            />
+            <label class="form-check-label" for="seleccionar-todo">
+              Seleccionar todo
+            </label>
+          </div>
+          <div id="lista-controles"></div>
+          <div class="input-group mt-2">
+            <input
+              type="text"
+              id="input-ruta-raiz"
+              class="form-control"
+              placeholder="Ruta raíz"
+              value="/ssd/www/"
+            />
+            <input
+              type="text"
+              id="input-control"
+              class="form-control"
+              placeholder="Agregar control"
+            />
+            <div class="input-group-append">
+              <button id="btn-agregar" class="btn btn-primary">Agregar</button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <h1>Lista de rutas</h1>
+          <div id="lista-rutas"></div>
+          <div class="input-group mt-2">
+            <input
+              type="text"
+              id="input-identificador"
+              placeholder="Identificador de ruta"
+            />
+
+            <input type="text" id="input-ruta" class="form-control" placeholder="Agregar ruta" oninput="reemplazarBarrasInclinadas(this)">
+
+            <div class="input-group-append">
+              <button id="btn-agregar-ruta" class="btn btn-primary">
+                Agregar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button onclick="generarBash()" class="btn btn-success mt-4">
+        Generar Bash
+      </button>
+
+      <button onclick="confirmarEnvioBash()" class="btn btn-primary mt-4 ml-2">
+        Enviar Bash
+      </button>
+
+      <div class="form-group mt-4">
+        <label for="bash-output">Salida Bash</label>
+        <textarea
+          id="bash-output"
+          rows="30"
+          class="form-control"
+          readonly
+        ></textarea>
+      </div>
+    </div>
+  </body>
+  <!-- Bootstrap JS, Popper.js, and jQuery -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+    crossorigin="anonymous"
+  ></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/funciones.js"></script>
+</html>
