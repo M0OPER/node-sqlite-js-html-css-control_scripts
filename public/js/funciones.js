@@ -45,6 +45,7 @@ function agregarControlALista(idControl, nombreControl, rutaRaiz) {
 
   const eliminarBtn = document.createElement("button");
   eliminarBtn.classList.add("btn");
+  eliminarBtn.classList.add("m-1");
 
   const trashIcon = document.createElement("i");
   trashIcon.classList.add("bi", "bi-trash");
@@ -54,10 +55,10 @@ function agregarControlALista(idControl, nombreControl, rutaRaiz) {
 
   eliminarBtn.onclick = () => eliminarControl(idControl);
 
+  item.appendChild(eliminarBtn);
   item.appendChild(checkbox);
   item.appendChild(strong);
   item.appendChild(span);
-  item.appendChild(eliminarBtn);
 
   listaControles.appendChild(item);
 }
@@ -197,6 +198,7 @@ function agregarRutaALista(idRuta, identificador, ruta) {
 
   const eliminarBtn = document.createElement("button");
   eliminarBtn.classList.add("btn");
+  eliminarBtn.classList.add("m-1");
 
   const trashIcon = document.createElement("i");
   trashIcon.classList.add("bi", "bi-trash");
@@ -206,10 +208,10 @@ function agregarRutaALista(idRuta, identificador, ruta) {
 
   eliminarBtn.onclick = () => eliminarRutaDataBase(idRuta);
 
+  item.appendChild(eliminarBtn);
   item.appendChild(checkbox);
   item.appendChild(id);
   item.appendChild(span);
-  item.appendChild(eliminarBtn);
 
   listaRutas.appendChild(item);
 }
