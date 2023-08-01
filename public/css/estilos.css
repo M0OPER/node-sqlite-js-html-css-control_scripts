@@ -113,7 +113,6 @@ body {
 .mayusculas,
 input,
 textarea {
-  text-transform: uppercase !important;
 }
 
 .letras {

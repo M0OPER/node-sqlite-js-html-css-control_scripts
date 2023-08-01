@@ -19,9 +19,13 @@ async function cargarControles() {
     const controles = await response.json();
     const listaControles = document.getElementById("lista-controles");
     listaControles.innerHTML = ""; // Limpia el contenido de la lista antes de agregar nuevos controles
+
     controles.forEach((control) => {
       agregarControlALista(control.id, control.nombre, control.ruta_raiz);
     });
+
+    const totalControlesElement = document.getElementById("totalControles");
+    totalControlesElement.textContent = controles.length; // Set the total count
   } else {
     console.error("Error al cargar los controles");
   }
@@ -172,13 +176,18 @@ async function cargarRutas() {
     const rutas = await response.json();
     const listaRutas = document.getElementById("lista-rutas");
     listaRutas.innerHTML = ""; // Limpia el contenido de la lista antes de agregar nuevas rutas
+
     rutas.forEach((ruta) => {
       agregarRutaALista(ruta.id, ruta.identificador, ruta.ruta);
     });
+
+    const totalRutasElement = document.getElementById("totalRutas");
+    totalRutasElement.textContent = rutas.length; // Set the total count
   } else {
     console.error("Error al cargar las rutas");
   }
 }
+
 
 function agregarRutaALista(idRuta, identificador, ruta) {
   const listaRutas = document.getElementById("lista-rutas");
