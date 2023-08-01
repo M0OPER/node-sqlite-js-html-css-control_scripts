@@ -188,7 +188,6 @@ async function cargarRutas() {
   }
 }
 
-
 function agregarRutaALista(idRuta, identificador, ruta) {
   const listaRutas = document.getElementById("lista-rutas");
 
@@ -202,8 +201,11 @@ function agregarRutaALista(idRuta, identificador, ruta) {
   const id = document.createElement("strong");
   id.textContent = `${identificador}: `;
 
-  const span = document.createElement("span");
-  span.textContent = `${ruta}`;
+  const textarea = document.createElement("textarea");
+  textarea.rows = 2;
+  textarea.classList.add("form-control");
+  textarea.value = ruta;
+  textarea.disabled = true; // Set the textarea to be disabled
 
   const eliminarBtn = document.createElement("button");
   eliminarBtn.classList.add("btn");
@@ -220,7 +222,7 @@ function agregarRutaALista(idRuta, identificador, ruta) {
   item.appendChild(eliminarBtn);
   item.appendChild(checkbox);
   item.appendChild(id);
-  item.appendChild(span);
+  item.appendChild(textarea);
 
   listaRutas.appendChild(item);
 }

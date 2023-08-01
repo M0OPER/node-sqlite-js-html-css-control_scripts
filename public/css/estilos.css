@@ -986,3 +986,11 @@ h3 {
   overflow: auto !important;
   height: 80vh !important;
 }
+
+strong {
+  white-space: normal;
+}
+
+#lista-rutas strong {
+  white-space: normal;
+}

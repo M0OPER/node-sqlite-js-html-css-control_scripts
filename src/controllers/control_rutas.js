@@ -21,7 +21,7 @@ router.post("/agregar-ruta", (req, res) => {
 });
 
 router.get("/obtener-rutas", (req, res) => {
-  const sql = "SELECT rowid as id, identificador, ruta FROM rutas";
+  const sql = "SELECT rowid as id, identificador, ruta FROM rutas ORDER BY identificador";
   db.all(sql, [], (err, rows) => {
     if (err) {
       throw err;

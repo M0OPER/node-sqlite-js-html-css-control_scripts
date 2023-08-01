@@ -21,7 +21,7 @@ router.post("/agregar-control", (req, res) => {
 });
 
 router.get("/obtener-controles", (req, res) => {
-  const sql = "SELECT rowid as id, nombre, ruta_raiz FROM controles";
+  const sql = "SELECT rowid as id, nombre, ruta_raiz FROM controles ORDER BY nombre";
   db.all(sql, [], (err, rows) => {
     if (err) {
       throw err;
