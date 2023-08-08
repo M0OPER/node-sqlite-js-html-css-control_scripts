@@ -205,6 +205,7 @@ function agregarRutaALista(idRuta, identificador, ruta) {
   textarea.rows = 2;
   textarea.classList.add("form-control");
   textarea.value = ruta;
+  textarea.textContent = ruta;
   textarea.disabled = true; // Set the textarea to be disabled
 
   const eliminarBtn = document.createElement("button");
@@ -295,7 +296,8 @@ function generarBash() {
   seleccionados.forEach((control) => {
     bashOutput.value += `echo "---------------- Copiando a ${control.nombreControl} --------------------->"\n`;
     rutasOrigen.forEach((rutaElement) => {
-      const ruta = rutaElement.parentElement.querySelector("span").textContent;
+      const ruta =
+        rutaElement.parentElement.querySelector("textarea").textContent;
       bashOutput.value += `rsync -azvh /ssd/www/control${ruta} ${control.raizControl}${control.nombreControl}${ruta}\n`;
     });
     bashOutput.value += `echo "---------------- ${control.nombreControl} Copiado con éxito -------------->"\n`;
