@@ -12,12 +12,12 @@ const upload = multer({ dest: "archivos/" });
 const Client = require("ssh2").Client;
 
 // Importa las rutas
-const controlControles = require('./controllers/control_controles');
-const controlRutas = require('./controllers/control_rutas');
+const controlControles = require("./controllers/control_controles");
+const controlRutas = require("./controllers/control_rutas");
 
 // Utiliza las rutas que has definido
-app.use('/controles', controlControles);
-app.use('/rutas', controlRutas);
+app.use("/controles", controlControles);
+app.use("/rutas", controlRutas);
 
 function transferFileToRemoteServer(localFilePath, remotePath) {
   let conn = new Client();
@@ -57,8 +57,9 @@ function transferFileToRemoteServer(localFilePath, remotePath) {
 }
 
 app.post("/upload-bash", upload.single("bash-script"), (req, res) => {
-  const localFilePath = req.file.path; 
-  const remotePath = "/ssd/www/lupajuridica/scripts/archivos/script_controles.sh";
+  const localFilePath = req.file.path;
+  const remotePath =
+    "/ssd/www/lupajuridica/scripts/archivos/script_controles.sh";
 
   console.log(`LOG: Archivo subido correctamente: ${localFilePath}`);
   transferFileToRemoteServer(localFilePath, remotePath);

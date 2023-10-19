@@ -20,8 +20,17 @@ async function cargarControles() {
     const listaControles = document.getElementById("lista-controles");
     listaControles.innerHTML = ""; // Limpia el contenido de la lista antes de agregar nuevos controles
 
+    const selectControl = document.getElementById("select-control");
+    selectControl.innerHTML = ""; // Limpia el contenido del select antes de agregar nuevas opciones
+
+    // Agregar una opción vacía al principio del select
+    agregarOptionAlSelect("/ssd/www/control", "control");
+
     controles.forEach((control) => {
       agregarControlALista(control.id, control.nombre, control.ruta_raiz);
+
+      // Agregar opciones al select
+      agregarOptionAlSelect(control.ruta_raiz + control.nombre , control.nombre);
     });
 
     const totalControlesElement = document.getElementById("totalControles");
@@ -30,6 +39,7 @@ async function cargarControles() {
     console.error("Error al cargar los controles");
   }
 }
+
 
 function agregarControlALista(idControl, nombreControl, rutaRaiz) {
   const listaControles = document.getElementById("lista-controles");
@@ -65,6 +75,16 @@ function agregarControlALista(idControl, nombreControl, rutaRaiz) {
   item.appendChild(span);
 
   listaControles.appendChild(item);
+}
+
+function agregarOptionAlSelect(value, text) {
+  const selectControl = document.getElementById("select-control");
+
+  const option = document.createElement("option");
+  option.value = value;
+  option.textContent = text;
+
+  selectControl.appendChild(option);
 }
 
 async function agregarControl() {
@@ -293,12 +313,14 @@ function generarBash() {
   const rutasOrigen = document.querySelectorAll(
     '#lista-rutas input[type="checkbox"]:checked'
   );
+  const selectPadre= document.getElementById("select-control").value;
+  console.log(selectPadre);
   seleccionados.forEach((control) => {
     bashOutput.value += `echo "---------------- Copiando a ${control.nombreControl} --------------------->"\n`;
     rutasOrigen.forEach((rutaElement) => {
       const ruta =
         rutaElement.parentElement.querySelector("textarea").textContent;
-      bashOutput.value += `rsync -azvh /ssd/www/control${ruta} ${control.raizControl}${control.nombreControl}${ruta}\n`;
+      bashOutput.value += `rsync -azvh ${selectPadre}${ruta} ${control.raizControl}${control.nombreControl}${ruta}\n`;
     });
     bashOutput.value += `echo "---------------- ${control.nombreControl} Copiado con éxito -------------->"\n`;
   });
